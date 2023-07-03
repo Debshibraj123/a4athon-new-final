@@ -1,0 +1,26 @@
+<title>Library Management System</title>
+{% extends 'base.html' %}
+
+<body>
+{% block content %}
+<h1>Library Management System</h1>
+<div id="message">
+    {{message}}
+</div>
+{%load static%}
+<img src="{%static 'images/Quotes/Quote-5.png' %}">
+<!-- <input type="text" value="{{choosen_img}}"> -->
+
+
+<style>
+    img{
+        height:70%;
+        width:auto;
+        margin: 2%;
+        border-radius:3em;
+    }
+</style>
+
+{% endblock %}
+</body>
+</html>
