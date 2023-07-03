@@ -84,15 +84,39 @@ def edit_student_data(request,roll):
     except Exception as error:
         print(f"{error} occured at edit_student_data view")
 
-def edit_book_data(request,id):
-    return HttpResponse(f"<label>A book with ID: {id} could not be edited...</label><h2>The feature is comming soon</h2>")
+def delete_book(request, id):
+    try:
+        book = Book.objects.get(id=id)
+        if request.method == "POST":
+            book.delete()
+            return redirect('/view_books')
+        return render(request, 'delete_book.html', {'book': book})
+    except Book.DoesNotExist:
+        return HttpResponse(f"Book with ID: {id} does not exist.")
 
-def delete_student(request,roll):
-    return HttpResponse(f"<h2>Delete Student</h2><label>Student with Roll Number: {roll} could not be deleted...</label><h2>The feature is comming soon</h2>")
-    pass
+def delete_student(request, roll):
+    try:
+        student = Students.objects.get(roll_number=roll)
+        if request.method == "POST":
+            student.delete()
+            return redirect('/show_students')
+        return render(request, 'delete_student.html', {'student': student})
+    except Students.DoesNotExist:
+        return HttpResponse(f"Student with Roll Number: {roll} does not exist.")
 
-def delete_book(request,id):
-    return HttpResponse(f"<h2>Delete Book</h2><label>Book with ID: {id} could not be deleted..</label><h2>The feature is comming soon</h2>")
+def edit_book(request, id):
+    try:
+        book = Book.objects.get(id=id)
+        if request.method == "POST":
+            # Update the book's data
+            book.book_title = request.POST['book_title']
+            book.author = request.POST['author']
+            # Save the changes
+            book.save()
+            return redirect('/view_books')
+        return render(request, 'edit_book.html', {'book': book})
+    except Book.DoesNotExist:
+        return HttpResponse(f"Book with ID: {id} does not exist.")
 
 def return_issued_book(request,id):   
     obj=Book_Issue.objects.get(id=id)

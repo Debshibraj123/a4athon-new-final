@@ -11,10 +11,9 @@ urlpatterns = [
     path('view_books', views.view_books, name='show_book_record'),
     path('view_books_issued', views.view_bissue, name='show_issue_record'),
     path('edit/student/<str:roll>',views.edit_student_data,name="Edit Student data"),
-    path('edit/book/<uuid:id>',views.edit_book_data,name="Edit Student data"),
-    path('delete/student/<str:roll>',views.delete_student,name="Delete Student data"),
-    path('delete/book/<str:id>',views.delete_book,name="Delete book data"),
-    path('return_book/<int:id>',views.return_issued_book,name="return_issued_book"),
-    path('edit_issued/<int:id>',views.edit_issued,name="edit_issued"),
+    path('delete_book/<int:id>/', views.delete_book, name='delete_book'),
+    path('delete_student/<int:roll>/', views.delete_student, name='delete_student'),
+    path('edit_book/<int:id>/', views.edit_book, name='edit_book'),
+
 
 ]

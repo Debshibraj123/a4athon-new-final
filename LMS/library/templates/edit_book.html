@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Book</title>
+</head>
+<body>
+    <h2>Edit Book</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="book_title">Book Title:</label>
+        <input type="text" id="book_title" name="book_title" value="{{ book.book_title }}">
+        <br>
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" value="{{ book.author }}">
+        <br>
+        <input type="submit" value="Save">
+    </form>
+</body>
+</html>
