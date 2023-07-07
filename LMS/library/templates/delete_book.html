@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Book</title>
+</head>
+<body>
+    <h2>Delete Book</h2>
+    <p>Are you sure you want to delete the following book?</p>
+    <p><strong>ID:</strong> {{ book.id }}</p>
+    <p><strong>Title:</strong> {{ book.book_title }}</p>
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+</body>
+</html>

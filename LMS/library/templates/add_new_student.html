@@ -4,17 +4,62 @@
 <body>
     
 {% block content %}
-<div class="form">
-<form method="POST" action="add_new_student" >
+<div class="form-container">
+  <form method="POST" action="add_new_student">
     {% csrf_token %}
     <label class="label-default">Student Details</label><br>
-    <label>Roll Number:</label><br><div>{{form.roll_number}}</div>
-    <label>Student Name:</label><br> <div> {{form.fullname}}</div>
-    <label>Student Email:</label><br> <div> {{form.email}}</div>
-    <label>Student Mobile no:</label><br> <div>{{form.mobile_no}}</div><br>
-    <br> <button type="submit" class="btn btn-success">Add Student</button>
-</form>
+    <div class="form-group">
+      <label>Roll Number:</label><br>
+      <div>{{form.roll_number}}</div>
+    </div>
+    <div class="form-group">
+      <label>Student Name:</label><br>
+      <div>{{form.fullname}}</div>
+    </div>
+    <div class="form-group">
+      <label>Student Email:</label><br>
+      <div>{{form.email}}</div>
+    </div>
+    <div class="form-group">
+      <label>Student Mobile no:</label><br>
+      <div>{{form.mobile_no}}</div>
+    </div>
+    <br>
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">Add Student</button>
+    </div>
+  </form>
 </div>
+
+<style>
+  /* CSS styles */
+  .form-container {
+    width: 400px;
+    margin-top: 150px;
+    margin: 120 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+  input[type="text"],
+    input[type="email"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+  label {
+    font-weight: bold;
+  }
+
+  button {
+    padding: 10px 20px;
+  }
+</style>
 {% endblock %}
 
 </body>
